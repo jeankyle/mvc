@@ -14,32 +14,11 @@ use App\Models\HomeModel;
 class HomeController extends BaseController
 {
     public function __construct() {
-        parent::__construct('Home');
+        parent::__construct();
     }
 
     public function index()
     {
-        // echo '<pre>';
-        $users = $this->model->read();
-        $number_of_users = $this->model->count();
-
-        $this->view('home/index', [
-            'users' => $users
-        ]);
-    }
-
-    public function add()
-    {
-        $data = [
-            'name' => 'Jean Kyle',
-            'address' => 'Al Rahma',
-            'location' => 'Kilimani',
-        ];
-
-        if($this->model->create($data)) {
-            echo 'User added successfully';
-        } else {
-            echo 'Operation failed!';
-        }
+        $this->view('home/index');
     }
 }

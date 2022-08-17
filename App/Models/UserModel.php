@@ -9,9 +9,9 @@ namespace App\Models;
 
 use Abc\Base\AbstractBaseModel;
 
-class HomeModel extends AbstractBaseModel
+class UserModel extends AbstractBaseModel
 {
-    protected const TABLESCHEMA = 'users';
+    protected const TABLESCHEMA = 'user';
 	protected const TABLESCHEMAID = 'id';
 
     public function __construct() {

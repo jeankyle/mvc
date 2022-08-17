@@ -31,8 +31,8 @@ class HomeController extends BaseController
     public function add()
     {
         $data = [
-            'name' => 'Michael Peter',
-            'address' => 'Msikitini',
+            'name' => 'Jean Kyle',
+            'address' => 'Al Rahma',
             'location' => 'Kilimani',
         ];
 

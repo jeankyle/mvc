@@ -13,7 +13,7 @@ use Exception;
 
 class BaseView
 {
-    public static function render(string $template, array $optional_view_data = [])
+    public static function render(string $template, array $data = [])
     {
         $file = ROOT_PATH . '/App/Views/' . $template;
         // echo $file;
@@ -25,7 +25,7 @@ class BaseView
         }
     }
 
-    public static function template(string $template, array $optional_view_data = [])
+    public static function template(string $template, array $data = [])
     {
         $file = ROOT_PATH . '/App/Views/_templates/' . $template;
 //        echo $file;

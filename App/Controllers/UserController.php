@@ -22,8 +22,12 @@ class UserController extends BaseController
         $users = $this->model->read();
         $number_of_users = $this->model->count();
 
+        // echo '<pre>';
+        // print_r($users);
+
         $this->view('user/index', [
-            'users' => $users
+            'users' => $users,
+            'total_users' => $number_of_users
         ]);
     }
 

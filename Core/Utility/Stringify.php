@@ -149,7 +149,7 @@ class Stringify
     public static function titlelize($string): string
     {
 //        //Log::write('Creating a title from a string');
-        return ucwords(str_replace(['-', '_'], ' ', $string));
+        return ucwords(str_replace(['-', '_'], ' ', strtolower($string)));
     }
 
     public static function underscoreSeparate($string, $capitals = false): string

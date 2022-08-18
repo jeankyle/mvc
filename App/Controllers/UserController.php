@@ -9,6 +9,8 @@
 namespace App\Controllers;
 
 use Abc\Base\BaseController;
+use Abc\Utility\RandomCharGenerator;
+use Abc\Utility\Stringify;
 use App\Models\UserModel;
 
 class UserController extends BaseController
@@ -34,15 +36,17 @@ class UserController extends BaseController
     public function add()
     {
         $data = [
-            'name' => 'Jean Kyle',
-            'address' => 'Al Rahma',
-            'location' => 'Kilimani',
+            'name' => Stringify::titlelize(RandomCharGenerator::name() . ' ' . RandomCharGenerator::name()),
+            'address' => Stringify::titlelize(RandomCharGenerator::address()),
+            'location' => Stringify::titlelize(RandomCharGenerator::address()),
         ];
 
         if($this->model->create($data)) {
-            echo 'User added successfully';
+            // echo 'User added successfully';
+            header('Location: /user/index');
         } else {
-            echo 'Operation failed!';
+            // echo 'Operation failed!';
+            header('Location: /user/index');
         }
     }
 }

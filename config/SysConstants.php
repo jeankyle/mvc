@@ -11,16 +11,12 @@ const SYSTEM_PATH = CORE_PATH . 'System/';
 
 const PUBLIC_PATH = ROOT_PATH . '/public';
 
-if (!file_exists(ROOT_PATH . '/storage')) {
-    mkdir(ROOT_PATH . '/storage', 0777, true);
-}
-
-if (!file_exists(ROOT_PATH . '/storage/logs')) {
-    mkdir(ROOT_PATH . '/storage/logs', 0777, true);
-}
-
 const STORAGE_PATH = ROOT_PATH . DS . 'storage';
 const LOG_PATH = STORAGE_PATH . DS . 'logs';
+
+if (!file_exists(LOG_PATH)) {
+    mkdir(LOG_PATH, 0777, true);
+}
 
 // messages
 const MSG_403 = "You are not authorized to access this page";

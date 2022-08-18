@@ -72,7 +72,7 @@ class App
             $unclean_url = $_SERVER['QUERY_STRING'] ?? $_SERVER['REQUEST_URI'];
 
             if ($unclean_url) {
-                return explode('/', filter_var(rtrim($unclean_url, '/'), FILTER_SANITIZE_URL));
+                return explode(DS, filter_var(rtrim($unclean_url, DS), FILTER_SANITIZE_URL));
             } else {
                 Log::write('Both QUERY_STRING and REQUEST_URI variables were NOT found. How weird is that?', LOG_ALERT);
                 return null;

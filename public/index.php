@@ -19,9 +19,6 @@ use Abc\ErrorHandler\ErrorHandler;
 
 require_once 'include.php';
 //print_r(phpversion());
-//exit;
-//echo APP['error_handler'] . '<br>';
-//echo APP['exception_handler'] . '<br>';
 
 error_reporting(E_ALL);
 set_error_handler(APP['error_handler']);

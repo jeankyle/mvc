@@ -10,6 +10,9 @@ const CORE_PATH = ROOT_PATH . '/Core/';
 const SYSTEM_PATH = CORE_PATH . 'System/';
 
 const PUBLIC_PATH = ROOT_PATH . '/public';
+const CSS_PATH = PUBLIC_PATH . '/css';
+const JS_PATH = PUBLIC_PATH . '/js';
+const IMAGE_PATH = PUBLIC_PATH . '/images';
 
 const STORAGE_PATH = ROOT_PATH . DS . 'storage';
 const LOG_PATH = STORAGE_PATH . DS . 'logs';

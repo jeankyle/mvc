@@ -13,5 +13,5 @@ use Abc\Utility\Log;
 Log::write('Wrong directory: ' . realpath(dirname(__FILE__, 1)) . '. Navigate to /public', 'emergency');
 
 echo '<pre>';
-echo '<br />';print_r($_SERVER);
+print_r($_SERVER);
 echo '</pre>';

@@ -33,6 +33,9 @@
                         <a class="nav-link" href="/user/">Users</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/employee/index">Employees</a>
+                    </li>
+                    <!-- <li class="nav-item">
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                     </li>
                     <li class="nav-item dropdown">
@@ -42,7 +45,7 @@
                             <li><a class="dropdown-item" href="#">Another action</a></li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                 </ul>
                 <form>
                     <input class="form-control" type="text" placeholder="Search" aria-label="Search">

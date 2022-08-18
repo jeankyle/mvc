@@ -67,4 +67,18 @@ class RandomCharGenerator
         return $random;
 
     }
+
+    public static function password(int $length = 64, bool $specialChars = true) : string
+    {
+        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        if ($specialChars) {
+            $chars .= '!@#$%^&*()';
+        }
+        $random = '';
+        for ($i = 0; $i < $length; $i++) {
+            $random .= substr($chars, mt_rand(0, strlen($chars) - 1), 1);
+        }
+        return $random;
+
+    }
 }

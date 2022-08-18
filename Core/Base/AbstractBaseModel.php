@@ -28,10 +28,14 @@ abstract class AbstractBaseModel extends BaseModel
         return $this->getDBConnection()->query($sql);
     }
 
-    public function read()
+    public function read($limit = null)
     {
         Log::write('Retrieving object(s) from the table');
-        $sql = "SELECT * FROM " . $this->tableSchema;
+
+        $limit = $limit ? ' LIMIT ' . $limit['from'] . ', ' . $limit['to'] : '';
+        $sql = "SELECT * FROM " . $this->tableSchema . $limit;
+        // echo $sql;
+        // exit;
 
         $statement = $this->getDBConnection()->query($sql);
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);

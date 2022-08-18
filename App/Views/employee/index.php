@@ -2,16 +2,16 @@
 
 use Abc\Utility\Stringify;
 
- require_once ROOT_PATH . '/App/Views/start.php'; ?>
+require_once ROOT_PATH . '/App/Views/start.php'; ?>
 
 <div class="container-fluid">
     <div class="row bg-light py-2 px-5 rounded">
         <div class="col-sm-8 mx-auto">
-            <h1>All Users</h1>
-            <p><?= $data['total_records']; ?> user(s) found</p>
+            <h1>All Employees</h1>
+            <p><?= $data['total_records']; ?> employees(s) found</p>
         </div>
         <div class="col-sm-4 mx-auto pt-5">
-            <a href="/user/add" class="btn btn-success">Add User</a>
+            <a href="/employee/add" class="btn btn-success">Add Employee</a>
         </div>
     </div>
     <?php if ($data['total_records'] > 0) { ?>
@@ -41,12 +41,12 @@ use Abc\Utility\Stringify;
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 <?php
-                echo '<li class="page-item' . $data['previous_disabled'] . '"><a class="page-link" href="/user/index/' . $data['previous'] . '">&laquo; Previous</a></li>';
+                echo '<li class="page-item' . $data['previous_disabled'] . '"><a class="page-link" href="/employee/index/' . $data['previous'] . '">&laquo; Previous</a></li>';
                 for ($i = 1; $i <= $data['total_pages']; $i++) {
                     $active = ($i == $data['current_page']) ? ' active' : '';
-                    echo '<li class="page-item' . $active . '"><a class="page-link" href="/user/index/' . $i . '">' . $i . '</a></li>';
+                    echo '<li class="page-item' . $active . '"><a class="page-link" href="/employee/index/' . $i . '">' . $i . '</a></li>';
                 }
-                echo '<li class="page-item' . $data['next_disabled'] . '"><a class="page-link" href="/user/index/' . $data['next'] . '">Next &raquo;</a></li>';
+                echo '<li class="page-item' . $data['next_disabled'] . '"><a class="page-link" href="/employee/index/' . $data['next'] . '">Next &raquo</a></li>';
                 ?>
             </ul>
         </nav>

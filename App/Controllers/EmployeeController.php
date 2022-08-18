@@ -13,11 +13,11 @@ use Abc\Utility\Log;
 use Abc\Utility\RandomCharGenerator;
 use Abc\Utility\Stringify;
 
-class UserController extends BaseController
+class EmployeeController extends BaseController
 {
     public function __construct()
     {
-        parent::__construct('user');
+        parent::__construct('Employee');
     }
 
     public function index()
@@ -46,7 +46,7 @@ class UserController extends BaseController
 
 
 
-        $this->view('user/index', [
+        $this->view('employee/index', [
             'results' => $results,
             'current_page' => $current_page,
             'total_pages' => $total_pages,
@@ -61,16 +61,15 @@ class UserController extends BaseController
     public function add()
     {
         $data = [
-            'name' => Stringify::titlelize(RandomCharGenerator::name() . ' ' . RandomCharGenerator::name()),
-            'address' => Stringify::titlelize(RandomCharGenerator::address()),
-            'location' => Stringify::titlelize(RandomCharGenerator::address()),
+            'name' => Stringify::titlelize(RandomCharGenerator::name(6) . ' ' . RandomCharGenerator::name(7)),
+            'company' => Stringify::titlelize(RandomCharGenerator::name(9)) . ' Company Ltd.',
         ];
 
         if ($this->model->create($data)) {
-            Log::write('User added successfully');
+            Log::write('Employee added successfully');
         } else {
-            Log::write('User creation failed');
+            Log::write('Employee creation failed');
         }
-        header('Location: /user');
+        header('Location: /employee');
     }
 }

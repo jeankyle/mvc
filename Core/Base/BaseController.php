@@ -25,7 +25,7 @@ class BaseController
             $model_with_namespace = 'App\\Models\\' . ucfirst(strtolower($model)) . 'Model';
             $this->model = new $model_with_namespace;
         }
-        
+
         $this->templateEngine = new BaseView();
     }
 
@@ -53,15 +53,46 @@ class BaseController
         }
     }
 
-    public function _permissionDenied($unauthorized_task = null) {
+    public function _permissionDenied($unauthorized_task = null)
+    {
         if ($unauthorized_task != null && $unauthorized_task != '') {
             ErrorHandler::exceptionHandler(new Exception('No permission to access: ' . $unauthorized_task), EXCEPTION_LOG, 403);
         }
     }
 
-    private function retrieveModuleName($module_class) {
+    private function retrieveModuleName($module_class)
+    {
         $temp_array = explode('\\', $module_class);
-//        print_r($temp_array);
+        //        print_r($temp_array);
         return $temp_array[1];
+    }
+
+    protected function paginate($total_records)
+    {
+        $records_per_page = 5;
+        $total_pages = ceil($total_records / $records_per_page);
+
+        $current_page = (isset($_GET) && !empty($_GET)) ? preg_replace("/[A-Za-z\/]/", '', array_keys($_GET)[0]) : 1;
+        $current_page = (empty($current_page) || $current_page < 1) ? 1 : $current_page;
+        $current_page = $current_page > $total_pages ? $total_pages : $current_page;
+
+        $limit['from'] = ($current_page - 1) * $records_per_page;
+        $limit['to'] = $records_per_page;
+
+        $previous = ($current_page > 1) ? $current_page - 1 : 1;
+        $next = ($current_page >= $total_pages) ? $total_pages : $current_page + 1;
+
+        $previous_disabled = ($current_page == 1) ? ' disabled' : '';
+        $next_disabled = ($current_page == $total_pages) ? ' disabled' : '';
+
+        return [
+            'current_page' => $current_page,
+            'total_pages' => $total_pages,
+            'previous' => $previous,
+            'next' => $next,
+            'previous_disabled' => $previous_disabled,
+            'next_disabled' => $next_disabled,
+            'limit' => $limit
+        ];
     }
 }

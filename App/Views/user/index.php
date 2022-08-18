@@ -14,6 +14,7 @@ use Abc\Utility\Stringify;
             <a href="/user/add" class="btn btn-success">Add User</a>
         </div>
     </div>
+    
     <?php if ($data['total_records'] > 0) { ?>
         <table class="table table-striped table-hover">
             <thead>

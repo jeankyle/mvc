@@ -22,6 +22,22 @@ class UserController extends BaseController
 
     public function index()
     {
+        $total_records = $this->model->count();
+        
+        if ($total_records > 0) {
+            $data_array = $this->paginate($total_records);
+        }
+
+        $limit = $data_array['limit'] ?? null;
+
+        $data_array['results'] = $this->model->read($limit);
+        $data_array['total_records'] = $total_records;
+
+        $this->view('user/index', $data_array);
+    }
+
+    public function index_old()
+    {
         $records_per_page = 5;
         $total_records = $this->model->count();
 

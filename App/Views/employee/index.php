@@ -14,6 +14,7 @@ require_once ROOT_PATH . '/App/Views/start.php'; ?>
             <a href="/employee/add" class="btn btn-success">Add Employee</a>
         </div>
     </div>
+    
     <?php if ($data['total_records'] > 0) { ?>
         <table class="table table-striped table-hover">
             <thead>

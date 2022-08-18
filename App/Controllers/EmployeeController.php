@@ -22,40 +22,18 @@ class EmployeeController extends BaseController
 
     public function index()
     {
-        $records_per_page = 5;
         $total_records = $this->model->count();
-
+        
         if ($total_records > 0) {
-            $total_pages = ceil($total_records / $records_per_page);
-
-            $current_page = (isset($_GET) && !empty($_GET)) ? preg_replace("/[A-Za-z\/]/", '', array_keys($_GET)[0]) : 1;
-            $current_page = (empty($current_page) || $current_page < 1) ? 1 : $current_page;
-            $current_page = $current_page > $total_pages ? $total_pages : $current_page;
-
-            $limit['from'] = ($current_page - 1) * $records_per_page;
-            $limit['to'] = $records_per_page;
-
-            $previous = ($current_page > 1) ? $current_page - 1 : 1;
-            $next = ($current_page >= $total_pages) ? $total_pages : $current_page + 1;
-
-            $previous_disabled = ($current_page == 1) ? ' disabled' : '';
-            $next_disabled = ($current_page == $total_pages) ? ' disabled' : '';
+            $data_array = $this->paginate($total_records);
         }
 
-        $results = $this->model->read($limit);
+        $limit = $data_array['limit'] ?? null;
 
+        $data_array['results'] = $this->model->read($limit);
+        $data_array['total_records'] = $total_records;
 
-
-        $this->view('employee/index', [
-            'results' => $results,
-            'current_page' => $current_page,
-            'total_pages' => $total_pages,
-            'total_records' => $total_records,
-            'previous' => $previous,
-            'next' => $next,
-            'previous_disabled' => $previous_disabled,
-            'next_disabled' => $next_disabled,
-        ]);
+        $this->view('employee/index', $data_array);
     }
 
     public function add()

@@ -48,7 +48,7 @@ class Stringify
     public static function justify($string, string $atts = '')
     {
         if (empty($string)) {
-            //Log::evo_log('String is empty', 'error');
+            //Log::write('String is empty', 'error');
             return;
         }
 
@@ -58,103 +58,103 @@ class Stringify
 
         /* Capitalize the first letter */
         if ('ucwords' == $atts) {
-//            //Log::evo_log('Capitalizing the first letter');
+//            //Log::write('Capitalizing the first letter');
             return ucwords(str_replace($search, $replace_search, $string));
         } elseif ('strtolower' == $atts) {
-//            //Log::evo_log('Converting string to lowercase');
+//            //Log::write('Converting string to lowercase');
             return strtolower(str_replace($search, $replace_search, $string));
         }
     }
 
     public static function pluralize($string): string
     {
-//        //Log::evo_log('Converting string ' . $string . ' to plural');
+//        //Log::write('Converting string ' . $string . ' to plural');
         if ($string[strlen($string) - 1] == 'y') {
             if (self::is_vowel($string[strlen($string) - 2])) {
-//                //Log::evo_log('Appending \'s\'');
+//                //Log::write('Appending \'s\'');
                 $plural = $string . 's'; //append s
             } else {
-//                //Log::evo_log('Converting \'y\' to \'ies\'');
+//                //Log::write('Converting \'y\' to \'ies\'');
                 $cut = substr($string, 0, -1);
                 $plural = $cut . 'ies'; //convert y to ies
             }
         } elseif ($string[strlen($string) - 1] == 's' || $string[strlen($string) - 1] == 'x' || $string[strlen($string) - 1] == 'z' || ($string[strlen($string) - 2] == 'c' && $string[strlen($string) - 1] == 'h') || ($string[strlen($string) - 2] == 's' && ($string[strlen($string) - 1] == 's' || $string[strlen($string) - 1] == 'h'))) {
-//            //Log::evo_log('Converting \'s\'/\'x\'/\'z\'/\'ch\'/\'ss/\'sh\' to \'es\'');
+//            //Log::write('Converting \'s\'/\'x\'/\'z\'/\'ch\'/\'ss/\'sh\' to \'es\'');
             $plural = $string . 'es'; //convert s || x || z || ch || ss || sh to es
         } elseif (($string[strlen($string) - 1] == 'f' || $string[strlen($string) - 2] == 'f')  && !in_array($string, self::PLURAL_EXCEPTIONS['f'])) {
             if ($string[strlen($string) - 1] == 'f') {
-//                //Log::evo_log('String ending with \'f\'');
+//                //Log::write('String ending with \'f\'');
                 $cut = substr($string, 0, -1);
             } else {
-//                //Log::evo_log('String ending with \'fe\'');
+//                //Log::write('String ending with \'fe\'');
                 $cut = substr($string, 0, -2);
             }
-//            //Log::evo_log('Converting \'fe\'/\'f\' to \'ves\'');
+//            //Log::write('Converting \'fe\'/\'f\' to \'ves\'');
             $plural = $cut . 'ves'; //convert fe||f to ves
         } elseif ($string[strlen($string) - 1] == 'o' && !in_array($string, self::PLURAL_EXCEPTIONS['o'])) {
-//            //Log::evo_log('Appending \'es\'');
+//            //Log::write('Appending \'es\'');
             $plural = $string . 'es'; //just append es
         } elseif ($string[strlen($string) - 2] == 'u' && $string[strlen($string) - 1] == 's') {
-//            //Log::evo_log('Converting \'us\' to \'i\'');
+//            //Log::write('Converting \'us\' to \'i\'');
             $cut = substr($string, 0, -2);
             $plural = $cut . 'i'; //convert us to i
         } elseif ($string[strlen($string) - 2] == 'i' && $string[strlen($string) - 1] == 's') {
-//            //Log::evo_log('Converting \'is\' to \'es\'');
+//            //Log::write('Converting \'is\' to \'es\'');
             $cut = substr($string, 0, -2);
             $plural = $cut . 'es'; //convert is to es
         }/* elseif ($string[strlen($string) - 2] == 'o' && $string[strlen($string) - 1] == 'n' && !in_array($string, self::ION_EXCEPTIONS)) {
             $cut = substr($string, 0, -2);
             $plural = $cut . 'a'; //convert on to a
         } */else {
-//            //Log::evo_log('Appending \'s\'');
+//            //Log::write('Appending \'s\'');
             $plural = $string . 's'; // just attach an s
         }
 
-//        //Log::evo_log('Returning plural form: ' . $plural);
+//        //Log::write('Returning plural form: ' . $plural);
         return $plural;
     }
 
     private static function is_vowel (string $letter): bool
     {
-//        //Log::evo_log('Checking if the letter' . $letter .' is a vowel');
+//        //Log::write('Checking if the letter' . $letter .' is a vowel');
         return in_array(strtolower($letter), self::VOWELS);
     }
 
     private static function is_consonant (string $letter): bool
     {
-//        //Log::evo_log('Checking if the letter' . $letter .' is a consonant');
+//        //Log::write('Checking if the letter' . $letter .' is a consonant');
         return in_array(strtolower($letter), self::CONSONANTS);
     }
 
     public static function capitalize($string, bool $full = false)
     {
         if (!empty($string)) {
-//            //Log::evo_log('String is not empty. Translating string');
+//            //Log::write('String is not empty. Translating string');
             // transliterate
             $text = self::translateString($string);
-//            //Log::evo_log('Capitalizing the string');
+//            //Log::write('Capitalizing the string');
             $text = $full ? strtoupper($text) : ucwords(strtolower($text));
             //$text = preg_replace('~[^-\w]+~', '', $text);
             if (empty($text)) {
-                //Log::evo_log('Text is empty', 'error');
+                //Log::write('Text is empty', 'error');
                 return "n-a";
             }
-//            //Log::evo_log('Returning the text');
+//            //Log::write('Returning the text');
             return $text;
         }
-//        //Log::evo_log('String is empty');
+//        //Log::write('String is empty');
         return false;
     }
 
     public static function titlelize($string): string
     {
-//        //Log::evo_log('Creating a title from a string');
+//        //Log::write('Creating a title from a string');
         return ucwords(str_replace(['-', '_'], ' ', $string));
     }
 
     public static function underscoreSeparate($string, $capitals = false): string
     {
-//        //Log::evo_log('separating words with underscore(_)');
+//        //Log::write('separating words with underscore(_)');
         if ($capitals) {
             return str_replace(' ', '_', $string);
         }
@@ -167,7 +167,7 @@ class Stringify
      */
     public static function convertToStudlyCaps(string $string) : string
     {
-//        //Log::evo_log('Converting to StudlyCaps');
+//        //Log::write('Converting to StudlyCaps');
         return str_replace(' ', '', ucwords(str_replace(['-', '_'], ' ', $string)));
     }
 
@@ -177,7 +177,7 @@ class Stringify
      */
     public static function convertToCamelCase(string $string) : string
     {
-//        //Log::evo_log('Converting to camelCase');
+//        //Log::write('Converting to camelCase');
         return lcfirst(self::convertToStudlyCaps($string));
     }
 
@@ -187,10 +187,10 @@ class Stringify
     public static function slugToUrl(string $str)
     {
         if (empty($str)) {
-            //Log::evo_log('String is empty', 'error');
+            //Log::write('String is empty', 'error');
             return false;
         }
-//        //Log::evo_log('Converting slug to URL');
+//        //Log::write('Converting slug to URL');
         return preg_replace('/[^A-Za-z0-9-]+/', '-', $str);
     }
 }

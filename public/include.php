@@ -14,7 +14,7 @@ define('ROOT_PATH', realpath(dirname(__FILE__, 2)));
  * Load the composer library
  */
 $autoload = ROOT_PATH . '/vendor/autoload.php';
-const CONFIG_PATH = ROOT_PATH . DS . "config/";
+const CONFIG_PATH = ROOT_PATH . DS . 'config/';
 
 if (is_file($autoload)) {
     require $autoload;

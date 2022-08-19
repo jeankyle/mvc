@@ -25,6 +25,6 @@ const CONTROLLER_NAMESPACE = 'App\Controllers\\';
 
 const APP = [
     "debug_mode" => "dev",
-    "error_handler" => "\\Abc\\ErrorHandler\\ErrorHandler::errorHandler",
-    "exception_handler" => "\\Abc\\ErrorHandler\\ErrorHandler::exceptionHandler"
+    "error_handler" => "\\Abc\\Utility\\ErrorHandler::errorHandler",
+    "exception_handler" => "\\Abc\\Utility\\ErrorHandler::exceptionHandler"
 ];

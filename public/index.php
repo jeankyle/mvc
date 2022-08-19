@@ -15,7 +15,7 @@ declare(strict_types = 1);
 
 use Abc\Base\App;
 use Abc\Utility\Log;
-use Abc\ErrorHandler\ErrorHandler;
+use Abc\Utility\ErrorHandler;
 
 require_once 'include.php';
 //print_r(phpversion());

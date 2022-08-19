@@ -30,10 +30,10 @@
                         <a class="nav-link active" aria-current="page" href="/home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/user/">Users</a>
+                        <a class="nav-link" href="/user">Users</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/employee/index">Employees</a>
+                        <a class="nav-link" href="/employee">Employees</a>
                     </li>
                     <!-- <li class="nav-item">
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>

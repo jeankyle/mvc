@@ -10,7 +10,7 @@ declare(strict_types = 1);
 
 namespace Abc\Base;
 
-use Abc\ErrorHandler\ErrorHandler;
+use Abc\Utility\ErrorHandler;
 use Abc\Utility\Log;
 use Exception;
 

@@ -10,7 +10,7 @@ declare (strict_types = 1);
 
 namespace Abc\Database;
 
-use Abc\ErrorHandler\ErrorHandler;
+use Abc\Utility\ErrorHandler;
 use PDO;
 use PDOException;
 

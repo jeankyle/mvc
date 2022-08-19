@@ -8,7 +8,7 @@
 
 declare(strict_types = 1);
 
-namespace Abc\ErrorHandler;
+namespace Abc\Utility;
 
 use ErrorException;
 use Abc\Utility\Log;

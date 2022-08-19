@@ -17,7 +17,7 @@ class EmployeeController extends BaseController
 {
     public function __construct()
     {
-        parent::__construct('Employee');
+        parent::__construct('employee');
     }
 
     public function index()

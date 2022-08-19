@@ -10,20 +10,29 @@ declare(strict_types = 1);
 
 namespace Abc\Base;
 
-use Abc\ErrorHandler\ErrorHandler;
+use Abc\Utility\ErrorHandler;
 use Abc\Utility\Log;
+use Abc\Utility\Stringify;
 use Exception;
 
 class BaseController
 {
     protected Object $templateEngine;
     protected ?object $model;
+    protected ?string $module_lowercase;
+    protected ?string $module_lowercase_plural;
+    protected ?string $module_title;
+    protected ?string $module_title_plural;
 
     public function __construct($model = null)
     {
         if ($model != null && $model != '') {
             $model_with_namespace = 'App\\Models\\' . ucfirst(strtolower($model)) . 'Model';
             $this->model = new $model_with_namespace;
+            $this->module_lowercase = strtolower($model);
+            $this->module_lowercase_plural = Stringify::pluralize($this->module_lowercase);
+            $this->module_title = Stringify::titlelize($this->module_lowercase);
+            $this->module_title_plural = Stringify::pluralize($this->module_title);
         }
 
         $this->templateEngine = new BaseView();
@@ -92,7 +101,13 @@ class BaseController
             'next' => $next,
             'previous_disabled' => $previous_disabled,
             'next_disabled' => $next_disabled,
-            'limit' => $limit
+            'limit' => $limit,
+            'first' => 1,
+            'last' => $total_pages,
+            'module_lowercase' => $this->module_lowercase,
+            'module_lowercase_plural' => $this->module_lowercase_plural,
+            'module_title' => $this->module_title,
+            'module_title_plural' => $this->module_title_plural,
         ];
     }
 }

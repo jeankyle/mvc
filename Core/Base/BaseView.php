@@ -8,7 +8,7 @@
 
 namespace Abc\Base;
 
-use Abc\ErrorHandler\ErrorHandler;
+use Abc\Utility\ErrorHandler;
 use Exception;
 
 class BaseView

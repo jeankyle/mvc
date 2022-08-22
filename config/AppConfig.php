@@ -13,7 +13,7 @@ const TAILWIND_THEME = 'tailwind';
 const BOOTSTRAP_THEME = 'bootstrap';
 const MDB_THEME = 'mdb';
 
-const MY_THEME = TAILWIND_THEME;
+const MY_THEME = BOOTSTRAP_THEME;
 
 const TEMPLATE_PATH = ROOT_PATH . '/App/Views/_templates/';
 
@@ -28,3 +28,5 @@ const APP = [
     "error_handler" => "\\Abc\\Utility\\ErrorHandler::errorHandler",
     "exception_handler" => "\\Abc\\Utility\\ErrorHandler::exceptionHandler"
 ];
+
+const RECORDS_PER_PAGE = 10;

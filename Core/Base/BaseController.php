@@ -6,7 +6,7 @@
  * It is not recommended using it in production as it is.
  */
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Abc\Base;
 
@@ -78,7 +78,7 @@ class BaseController
 
     protected function paginate($total_records)
     {
-        $records_per_page = 5;
+        $records_per_page = RECORDS_PER_PAGE;
         $total_pages = ceil($total_records / $records_per_page);
 
         $current_page = (isset($_GET) && !empty($_GET)) ? preg_replace("/[A-Za-z\/]/", '', array_keys($_GET)[0]) : 1;

@@ -38,7 +38,7 @@ class UserController extends BaseController
 
     public function index_old()
     {
-        $records_per_page = 5;
+        $records_per_page = RECORDS_PER_PAGE;
         $total_records = $this->model->count();
 
         if ($total_records > 0) {

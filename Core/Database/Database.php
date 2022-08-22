@@ -35,16 +35,6 @@ class Database
         $this->open();
     }
 
-    public function getDbCredentials(): array
-    {
-        return [
-            'host' => $this->dbHost,
-            'user' => $this->dbUname,
-            'password' => $this->dbPass,
-            'db' => $this->dbName,
-        ];
-    }
-
     public function getConnection()
     {
         return $this->conn;

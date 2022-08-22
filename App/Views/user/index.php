@@ -24,6 +24,7 @@ require_once ROOT_PATH . '/App/Views/start.php'; ?>
                         echo "<th scope='col'>" . strtoupper(Stringify::titlelize($result)) . "</th>";
                     }
                     ?>
+                    echo '<th scope='col'>ACTIONS</th>';
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +35,7 @@ require_once ROOT_PATH . '/App/Views/start.php'; ?>
                     foreach ($result as $key => $value) {
                         echo '<td>' . $result[$key] . '</td>';
                     }
+                    echo '<td><i class="fa fa-edit"></i></td>';
                     echo '</tr>';
                 }
                 ?>

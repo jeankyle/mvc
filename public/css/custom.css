@@ -341,7 +341,7 @@
 
 .bg-red {
     --bs-bg-opacity: 1;
-    background-color:  var(--tw-red-600) !important;
+    background-color:  var(--tw-red-200) !important;
 }
 
 .bg-blue {

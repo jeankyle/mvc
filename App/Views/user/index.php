@@ -38,6 +38,15 @@ require_once ROOT_PATH . '/App/Views/start.php'; ?>
                 }
                 ?>
             </tbody>
+            <thead>
+                <tr>
+                    <?php
+                    foreach (array_keys($data['results'][0]) as $result) {
+                        echo "<th scope='col'>" . strtoupper(Stringify::titlelize($result)) . "</th>";
+                    }
+                    ?>
+                </tr>
+            </thead>
         </table>
         <nav aria-label="Page navigation example">
             <ul class="pagination">
